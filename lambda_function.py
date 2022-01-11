@@ -3,6 +3,7 @@ import boto3
 
 dynamodb = boto3.resource('dynamodb')
 announcements_table = dynamodb.Table('tabmine')
+#test
 
 def lambda_handler(event, content):
     announcements_table.put_item(Item=event['queryStringParameters'])
