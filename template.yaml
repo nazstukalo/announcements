@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: A starter AWS Lambda function.
+Resources:
+
+  myDB:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: tabmine
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  helloworldpython:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      CodeUri: .
+      Description: A starter AWS Lambda function.
+      MemorySize: 128
+      Timeout: 3
+      Events:
+        HelloWorldApi:
+          Type: Api
+          Properties:
+            Path: /
+            Method: POST
+      Policies:
+        DynamoDBWritePolicy:
+          TableName: !Ref myDB
