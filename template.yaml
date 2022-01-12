@@ -49,5 +49,5 @@ Resources:
             Path: /
             Method: GET
       Policies:
-        DynamoDBWritePolicy:
+        DynamoDBReadPolicy:
           TableName: !Ref myDB
