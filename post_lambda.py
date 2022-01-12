@@ -1,7 +1,6 @@
 import json
 import boto3
-
-#some text
+#test
 dynamodb = boto3.resource('dynamodb')
 announcements_table = dynamodb.Table('tabmine')
 
