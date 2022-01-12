@@ -14,7 +14,7 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
 
-  helloworldpython:
+  postlambda:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: lambda_function.lambda_handler
@@ -29,6 +29,25 @@ Resources:
           Properties:
             Path: /
             Method: POST
+      Policies:
+        DynamoDBWritePolicy:
+          TableName: !Ref myDB
+          
+  getlambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      CodeUri: .
+      Description: A get AWS Lambda function.
+      MemorySize: 128
+      Timeout: 3
+      Events:
+        HelloWorldApi:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
       Policies:
         DynamoDBWritePolicy:
           TableName: !Ref myDB
