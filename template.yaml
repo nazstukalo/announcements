@@ -17,9 +17,9 @@ Resources:
   postlambda:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: get_lambda.lambda_handler
+      Handler: lambda_function.lambda_handler
       Runtime: python3.8
-      CodeUri: .
+      CodeUri: ./post_lambda
       Description: A starter AWS Lambda function.
       MemorySize: 128
       Timeout: 3
@@ -36,9 +36,9 @@ Resources:
   getlambda:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: post_lambda.lambda_handler
+      Handler: lambda_function.lambda_handler
       Runtime: python3.8
-      CodeUri: .
+      CodeUri: ./get_lambda
       Description: A get AWS Lambda function.
       MemorySize: 128
       Timeout: 3
