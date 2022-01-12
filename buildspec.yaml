@@ -6,6 +6,6 @@ phases:
       - echo Entered the build phase ...
 
       # Package SAM template
-      - sam package --template-file template.yaml --s3-bucket announcments-api --output-template-file packaged.yaml
+      - sam package --template-file template.yaml --s3-bucket mynazbicket --output-template-file packaged.yaml
       # Deploy packaged SAM template
-      - sam deploy --template-file packaged.yaml --stack-name python-hello-world-sam-application --capabilities CAPABILITY_IAM
+      - sam deploy --template-file packaged.yaml --stack-name announcments-app-sam-application --capabilities CAPABILITY_IAM
