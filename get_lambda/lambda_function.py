@@ -8,5 +8,5 @@ def lambda_handler(event, context):
   response = announcements_table.scan()
   return {
     'statusCode': 200,
-    'body': response['Items']
+    'body': json.dumps(response['Items'])
   }
